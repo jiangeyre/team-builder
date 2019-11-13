@@ -8,7 +8,8 @@ function App() {
     {
       name: "Lexie Jiang",
       email: "lexiemingjiang@gmail.com",
-      role: "Front End Developer"
+      role: "Front End Developer",
+      isAlive: true
     }
   ]);
 
@@ -17,7 +18,7 @@ function App() {
     <div className="App">
       <div className="memberCont">
         {member.map((human, index) => {
-          return <div className="memberCard" key={index}>Name: {human.name} <br/> Email: {human.email} <br/> Role: {human.role}</div>
+          return <div className="memberCard" key={index}>Name: {human.name} <br/> Email: {human.email} <br/> Role: {human.role} <h4>State of Life: {human.isAlive ? 'alive' : 'deceased'}</h4></div>
         })}
       </div>
       <Form member={member} setMember={setMember}/>
