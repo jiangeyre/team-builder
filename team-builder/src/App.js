@@ -13,15 +13,35 @@ function App() {
     }
   ]);
 
+  const [memberToEdit, setMemberToEdit] = useState([
+    {
+      name: "",
+      email: "",
+      role: "",
+      isAlive: false
+    }
+  ])
+
+  const editMember = (memBer) => {
+    setMemberToEdit(memBer);
+    console.log(memBer);
+  }
 
   return (
     <div className="App">
       <div className="memberCont">
         {member.map((human, index) => {
-          return <div className="memberCard" key={index}>Name: {human.name} <br/> Email: {human.email} <br/> Role: {human.role} <h4>State of Life: {human.isAlive ? 'alive' : 'deceased'}</h4></div>
+          return (
+          <div className="memberCard" key={index}>Name: {human.name} 
+          <br/> Email: {human.email} 
+          <br/> Role: {human.role} 
+          <h4>State of Life: {human.isAlive ? 'alive' : 'deceased'}</h4>
+          <button onClick={(element) => editMember(element)}>Edit.</button>
+          </div> 
+          )
         })}
       </div>
-      <Form member={member} setMember={setMember}/>
+      <Form member={member} setMember={setMember} memberToEdit={memberToEdit}/>
     </div>
   );
 }

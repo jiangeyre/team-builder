@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 const Form = props => {
 
@@ -8,7 +8,10 @@ const Form = props => {
         role: "",
         isAlive: false
     });
-    // const [isAlive, setIsAlive] = useState(false);
+
+    useEffect(() => {
+        return setCard(props.memberToEdit);
+    }, [props.memberToEdit])
 
     const handleChanges = e => {
         setCard({...card, [e.target.name]: e.target.value, [e.target.isAlive]: e.target.checked});
