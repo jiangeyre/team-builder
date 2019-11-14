@@ -21,6 +21,11 @@ const Form = props => {
             email: e.target.email.value,
             role: e.target.role.value,
         }
+
+        if(!newMember.name || !newMember.email || !newMember.role){
+            alert("You must enter your information into each box!!!");
+            return null;
+        }
         props.setMember(props.member.concat(newMember))
     };
 
@@ -61,7 +66,7 @@ const Form = props => {
             <label htmlFor="isAliveInput">Are you alive?</label>
             <input type="checkbox" id="isAliveInput" name="isAlive" value={isAlive} onChange={e => {setIsAlive(e.target.checked)}} />
             <br/>
-            <input type="submit" />
+            <input type="submit" value="Determine your fate..." />
         </form>
     )
 
