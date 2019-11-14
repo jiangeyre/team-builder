@@ -5,13 +5,13 @@ const Form = props => {
     const [card, setCard] = useState({
         name: "",
         email: "",
-        role: ""
+        role: "",
+        isAlive: false
     });
-    const [isAlive, setIsAlive] = useState(false);
+    // const [isAlive, setIsAlive] = useState(false);
 
     const handleChanges = e => {
-        setCard({...card, [e.target.name]: e.target.value});
-        console.log(e.target.name);
+        setCard({...card, [e.target.name]: e.target.value, [e.target.isAlive]: e.target.checked});
     };
 
     const handleSubmit = e => {
@@ -20,6 +20,7 @@ const Form = props => {
             name: e.target.name.value,
             email: e.target.email.value,
             role: e.target.role.value,
+            isAlive: e.target.isAlive.checked
         }
 
         if(!newMember.name || !newMember.email || !newMember.role){
@@ -64,7 +65,7 @@ const Form = props => {
             </select>
             <br/>
             <label htmlFor="isAliveInput">Are you alive?</label>
-            <input type="checkbox" id="isAliveInput" name="isAlive" value={isAlive} onChange={e => {setIsAlive(e.target.checked)}} />
+            <input type="checkbox" id="isAliveInput" name="isAlive" value={card.isAlive} onChange={handleChanges} />
             <br/>
             <input type="submit" value="Determine your fate..." />
         </form>
